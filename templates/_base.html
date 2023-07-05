@@ -33,6 +33,18 @@
 
   <body>
     <div class="container-fluid px-0">
+      <nav class="navbar container-fluid bg-success py-2">
+        <div class="container">
+            <a class="navbar-brand link-light" href="/">mPact Pro</a>
+            <ul class="nav d-flex">
+              {% if user.is_authenticated %}
+              <li class="nav-item"><a class="nav-link link-light" href="{% url 'logout' %}">Logout</a></li>
+              {% else %}
+              <li class="nav-item"><a class="nav-link link-light" href="{% url 'login' %}">Login</a></li>
+              {% endif %}
+            </ul>
+        </div>
+      </nav>
       {% block content %}{% endblock %}
     </div>
     <!-- Footer -->
