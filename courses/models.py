@@ -7,6 +7,9 @@ from customers.models import Customer
 
 class Course(models.Model):
     name = models.CharField(max_length=200, null=True)
+    addedOn = models.DateTimeField(auto_now_add=True)
+    updatedOn = models.DateTimeField(auto_now=True)
+    courseDate = models.DateField(db_index=True)
 
     class Meta:
         verbose_name = 'Course'
@@ -20,6 +23,9 @@ class CourseClass(models.Model):
     name = models.CharField(max_length=200, null=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     customers = models.ManyToManyField(Customer, blank=True)
+    addedOn = models.DateTimeField(auto_now_add=True)
+    updatedOn = models.DateTimeField(auto_now=True)
+    classDate = models.DateField(db_index=True)
 
     class Meta:
         verbose_name = 'Class'

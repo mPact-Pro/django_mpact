@@ -5,6 +5,9 @@ from django.db import models
 
 class Service(models.Model):
     name = models.CharField(max_length=200, null=True)
+    addedOn = models.DateTimeField(auto_now_add=True)
+    updatedOn = models.DateTimeField(auto_now=True)
+    serviceDate = models.DateField(db_index=True)
 
     class Meta:
         verbose_name = 'Service'

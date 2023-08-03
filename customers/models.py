@@ -15,6 +15,8 @@ class Customer(models.Model):
     courses = models.ManyToManyField(Course, blank=True)
     sessions = models.ManyToManyField(Session, blank=True)
     services = models.ManyToManyField(Service, blank=True)
+    addedOn = models.DateTimeField(auto_now_add=True)
+    updatedOn = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Customer'

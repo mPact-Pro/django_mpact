@@ -8,7 +8,7 @@ class Session(models.Model):
     name = models.CharField(max_length=200, null=True)
     addedOn = models.DateTimeField(auto_now_add=True)
     updatedOn = models.DateTimeField(auto_now=True)
-    sessionDate = models.DateField()
+    sessionDate = models.DateField(db_index=True)
 
     class Meta:
         verbose_name = 'Session'
