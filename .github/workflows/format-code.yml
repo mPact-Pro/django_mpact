@@ -1,9 +1,6 @@
 name: Format Code with Black
 
 on:
-  push:
-    branches:
-      - staging
   pull_request:
     branches:
       - main
@@ -34,3 +31,4 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: staging
