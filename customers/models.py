@@ -12,7 +12,6 @@ class Customer(models.Model):
     name = models.CharField(max_length=200, null=True)
     email = models.EmailField()
     agency = models.ForeignKey(Agency, on_delete=models.CASCADE)
-    courses = models.ManyToManyField(Course, blank=True)
     courseClass = models.ManyToManyField(CourseClass, blank=True)
     sessions = models.ManyToManyField(Session, blank=True)
     services = models.ManyToManyField(Service, blank=True)

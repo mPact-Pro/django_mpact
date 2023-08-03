@@ -20,14 +20,15 @@ class Session(models.Model):
 
     @classmethod
     def get_sessions_current_fiscal_year(cls):
-        # Determine the start and end dates of the current fiscal year (July 1 to June 30)
+        # Determine the start and end dates of the current fiscal year (Oct 1 to Sept 30)
         today = date.today()
         fiscal_year_start = date(today.year, 10, 1)
         fiscal_year_end = date(today.year + 1, 9, 30)
 
         # Filter sessions within the current fiscal year
         sessions = cls.objects.filter(
-            Q(sessionDate__gte=fiscal_year_start) & Q(sessionDate__lte=fiscal_year_end)
+            Q(sessionDate__gte=fiscal_year_start) & Q(
+                sessionDate__lte=fiscal_year_end)
         ).distinct()
 
         return sessions
