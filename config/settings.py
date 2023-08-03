@@ -48,7 +48,11 @@ INSTALLED_APPS = [
 
     # Local Apps
     'accounts',
-    'agency'
+    'agency',
+    'customers',
+    'services',
+    'courses',
+    'mPactSessions'
 ]
 
 MIDDLEWARE = [
