@@ -5,40 +5,59 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Course',
+            name="Course",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, null=True)),
-                ('addedOn', models.DateTimeField(auto_now_add=True)),
-                ('updatedOn', models.DateTimeField(auto_now=True)),
-                ('courseDate', models.DateField(db_index=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, null=True)),
+                ("addedOn", models.DateTimeField(auto_now_add=True)),
+                ("updatedOn", models.DateTimeField(auto_now=True)),
+                ("courseDate", models.DateField(db_index=True)),
             ],
             options={
-                'verbose_name': 'Course',
-                'verbose_name_plural': 'Courses',
+                "verbose_name": "Course",
+                "verbose_name_plural": "Courses",
             },
         ),
         migrations.CreateModel(
-            name='CourseClass',
+            name="CourseClass",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, null=True)),
-                ('addedOn', models.DateTimeField(auto_now_add=True)),
-                ('updatedOn', models.DateTimeField(auto_now=True)),
-                ('classDate', models.DateField(db_index=True)),
-                ('course', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='courses.course')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, null=True)),
+                ("addedOn", models.DateTimeField(auto_now_add=True)),
+                ("updatedOn", models.DateTimeField(auto_now=True)),
+                ("classDate", models.DateField(db_index=True)),
+                (
+                    "course",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="courses.course"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Class',
-                'verbose_name_plural': 'Classes',
+                "verbose_name": "Class",
+                "verbose_name_plural": "Classes",
             },
         ),
     ]

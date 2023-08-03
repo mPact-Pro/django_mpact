@@ -10,8 +10,8 @@ class Service(models.Model):
     serviceDate = models.DateField(db_index=True)
 
     class Meta:
-        verbose_name = 'Service'
-        verbose_name_plural = 'Services'
+        verbose_name = "Service"
+        verbose_name_plural = "Services"
 
     def __str__(self) -> str:
-        return f'{self.name}'
+        return f"{self.name}"

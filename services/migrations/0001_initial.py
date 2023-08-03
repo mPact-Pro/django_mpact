@@ -4,25 +4,31 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Service',
+            name="Service",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, null=True)),
-                ('addedOn', models.DateTimeField(auto_now_add=True)),
-                ('updatedOn', models.DateTimeField(auto_now=True)),
-                ('serviceDate', models.DateField(db_index=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, null=True)),
+                ("addedOn", models.DateTimeField(auto_now_add=True)),
+                ("updatedOn", models.DateTimeField(auto_now=True)),
+                ("serviceDate", models.DateField(db_index=True)),
             ],
             options={
-                'verbose_name': 'Service',
-                'verbose_name_plural': 'Services',
+                "verbose_name": "Service",
+                "verbose_name_plural": "Services",
             },
         ),
     ]

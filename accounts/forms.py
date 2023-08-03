@@ -8,4 +8,7 @@ User = get_user_model()
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = UserCreationForm.Meta.fields + ('agency', 'role',)
+        fields = UserCreationForm.Meta.fields + (
+            "agency",
+            "role",
+        )

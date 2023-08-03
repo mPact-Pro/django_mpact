@@ -5,34 +5,52 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('services', '0001_initial'),
-        ('agency', '0003_alter_agency_options'),
-        ('courses', '0001_initial'),
-        ('mPactSessions', '0001_initial'),
+        ("services", "0001_initial"),
+        ("agency", "0003_alter_agency_options"),
+        ("courses", "0001_initial"),
+        ("mPactSessions", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Customer',
+            name="Customer",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, null=True)),
-                ('email', models.EmailField(max_length=254)),
-                ('addedOn', models.DateTimeField(auto_now_add=True)),
-                ('updatedOn', models.DateTimeField(auto_now=True)),
-                ('agency', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='agency.agency')),
-                ('courseClass', models.ManyToManyField(blank=True, to='courses.courseclass')),
-                ('courses', models.ManyToManyField(blank=True, to='courses.course')),
-                ('services', models.ManyToManyField(blank=True, to='services.service')),
-                ('sessions', models.ManyToManyField(blank=True, to='mPactSessions.session')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, null=True)),
+                ("email", models.EmailField(max_length=254)),
+                ("addedOn", models.DateTimeField(auto_now_add=True)),
+                ("updatedOn", models.DateTimeField(auto_now=True)),
+                (
+                    "agency",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="agency.agency"
+                    ),
+                ),
+                (
+                    "courseClass",
+                    models.ManyToManyField(blank=True, to="courses.courseclass"),
+                ),
+                ("courses", models.ManyToManyField(blank=True, to="courses.course")),
+                ("services", models.ManyToManyField(blank=True, to="services.service")),
+                (
+                    "sessions",
+                    models.ManyToManyField(blank=True, to="mPactSessions.session"),
+                ),
             ],
             options={
-                'verbose_name': 'Customer',
-                'verbose_name_plural': 'Customers',
+                "verbose_name": "Customer",
+                "verbose_name_plural": "Customers",
             },
         ),
     ]

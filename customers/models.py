@@ -20,8 +20,8 @@ class Customer(models.Model):
     updatedOn = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = 'Customer'
-        verbose_name_plural = 'Customers'
+        verbose_name = "Customer"
+        verbose_name_plural = "Customers"
 
     def __str__(self) -> str:
-        return f'{self.name}'
+        return f"{self.name}"

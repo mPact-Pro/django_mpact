@@ -10,11 +10,11 @@ class Course(models.Model):
     courseDate = models.DateField(db_index=True)
 
     class Meta:
-        verbose_name = 'Course'
-        verbose_name_plural = 'Courses'
+        verbose_name = "Course"
+        verbose_name_plural = "Courses"
 
     def __str__(self) -> str:
-        return f'{self.name}'
+        return f"{self.name}"
 
 
 class CourseClass(models.Model):
@@ -25,8 +25,8 @@ class CourseClass(models.Model):
     classDate = models.DateField(db_index=True)
 
     class Meta:
-        verbose_name = 'Class'
-        verbose_name_plural = 'Classes'
+        verbose_name = "Class"
+        verbose_name_plural = "Classes"
 
     def __str__(self) -> str:
-        return f'{self.name}'
+        return f"{self.name}"

@@ -8,5 +8,8 @@ from django.db import models
 # That we can add fields as we need without having migration issues later
 class User(AbstractUser):
     agency = models.ForeignKey(Agency, on_delete=models.SET_NULL, null=True)
-    role = models.CharField(max_length=20, choices=[(
-        'admin', 'Admin'), ('counselor', 'Counselor')], null=True)
+    role = models.CharField(
+        max_length=20,
+        choices=[("admin", "Admin"), ("counselor", "Counselor")],
+        null=True,
+    )

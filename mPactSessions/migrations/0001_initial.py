@@ -5,36 +5,56 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Session',
+            name="Session",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, null=True)),
-                ('addedOn', models.DateTimeField(auto_now_add=True)),
-                ('updatedOn', models.DateTimeField(auto_now=True)),
-                ('sessionDate', models.DateField(db_index=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, null=True)),
+                ("addedOn", models.DateTimeField(auto_now_add=True)),
+                ("updatedOn", models.DateTimeField(auto_now=True)),
+                ("sessionDate", models.DateField(db_index=True)),
             ],
             options={
-                'verbose_name': 'Session',
-                'verbose_name_plural': 'Sessions',
+                "verbose_name": "Session",
+                "verbose_name_plural": "Sessions",
             },
         ),
         migrations.CreateModel(
-            name='SessionOutcome',
+            name="SessionOutcome",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('session', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='mPactSessions.session')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "session",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="mPactSessions.session",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'SessionOutcome',
-                'verbose_name_plural': 'SessionOutcomes',
+                "verbose_name": "SessionOutcome",
+                "verbose_name_plural": "SessionOutcomes",
             },
         ),
     ]

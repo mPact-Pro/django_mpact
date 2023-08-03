@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Q
 from datetime import date
+
 # Create your models here.
 
 
@@ -11,11 +12,11 @@ class Session(models.Model):
     sessionDate = models.DateField(db_index=True)
 
     class Meta:
-        verbose_name = 'Session'
-        verbose_name_plural = 'Sessions'
+        verbose_name = "Session"
+        verbose_name_plural = "Sessions"
 
     def __str__(self) -> str:
-        return f'{self.name}'
+        return f"{self.name}"
 
     @classmethod
     def get_sessions_current_fiscal_year(cls):
@@ -26,8 +27,7 @@ class Session(models.Model):
 
         # Filter sessions within the current fiscal year
         sessions = cls.objects.filter(
-            Q(sessionDate__gte=fiscal_year_start) &
-            Q(sessionDate__lte=fiscal_year_end)
+            Q(sessionDate__gte=fiscal_year_start) & Q(sessionDate__lte=fiscal_year_end)
         ).distinct()
 
         return sessions
@@ -39,8 +39,8 @@ class SessionOutcome(models.Model):
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name = 'SessionOutcome'
-        verbose_name_plural = 'SessionOutcomes'
+        verbose_name = "SessionOutcome"
+        verbose_name_plural = "SessionOutcomes"
 
     def __str__(self) -> str:
-        return f'{self.name}'
+        return f"{self.name}"
