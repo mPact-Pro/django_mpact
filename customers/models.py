@@ -17,7 +17,7 @@ class Customer(models.Model):
     email = models.EmailField()
     agency = models.ForeignKey(Agency, on_delete=models.CASCADE)
     courseClass = models.ManyToManyField(CourseClass, blank=True)
-    sessions = models.ForeignKey(Session, blank=True)
+    sessions = models.ForeignKey(Session, blank=True, on_delete=models.CASCADE)
     services = models.ManyToManyField(Service, blank=True)
     addedOn = models.DateTimeField(auto_now_add=True)
     updatedOn = models.DateTimeField(auto_now=True)
