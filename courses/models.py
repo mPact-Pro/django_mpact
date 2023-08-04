@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.db.models import Q
+from datetime import date
 from agency.models import Agency
 
 # Create your models here.
@@ -40,3 +41,21 @@ class CourseClass(models.Model):
 
     def __str__(self) -> str:
         return f"{self.name}"
+
+    @classmethod
+    def get_classes_current_fiscal_year(cls):
+        # Determine the start and end dates of the current fiscal year (Oct 1 to Sept 30)
+        today = date.today()
+        fiscal_year_start = date(today.year, 10, 1)
+        fiscal_year_end = date(today.year + 1, 9, 30)
+
+        # Filter classes within the current fiscal year
+        # Q translates to native SQL query, this is querying the data in realtime
+        # sql so it "should" be fast since the classes will be limited by agency
+        # for the query
+        classes = cls.objects.filter(
+            Q(classDate__gte=fiscal_year_start) & Q(
+                classDate__lte=fiscal_year_end)
+        ).distinct()
+
+        return classes
