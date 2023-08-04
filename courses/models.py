@@ -42,6 +42,10 @@ class CourseClass(models.Model):
     def __str__(self) -> str:
         return f"{self.name}"
 
+    def get_customers(self):
+        # Get all customers associated with this CourseClass
+        return self.customer_set.all()
+
     @classmethod
     def get_classes_current_fiscal_year(cls):
         # Determine the start and end dates of the current fiscal year (Oct 1 to Sept 30)

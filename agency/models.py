@@ -1,5 +1,7 @@
 from django.db import models
 
+from courses.models import Course
+
 # Create your models here.
 
 
@@ -17,3 +19,19 @@ class Agency(models.Model):
 
     def __str__(self) -> str:
         return f"{self.name}"
+
+    def get_all_users(self):
+        # Retrieve all agency users counselors and admins
+        return self.user_set.all()
+
+    def get_all_customers(self):
+        # Retrieve all customers associated with this agency
+        return self.customer_set.all()
+
+    def get_all_courses(self):
+        # Retrieve all courses associated with this agency
+        return self.course_set.all()
+
+    def get_all_course_classes(self):
+        # retrieve all classes assigned to agency courses
+        return Course.objects.filter(courseclass__agency=self).distinct()

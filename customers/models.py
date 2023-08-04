@@ -28,3 +28,15 @@ class Customer(models.Model):
 
     def __str__(self) -> str:
         return f"{self.name}"
+
+    def get_all_sessions(self):
+        # Retrieve all sessions associated with this customer
+        return self.sessions.all()
+
+    def get_all_services(self):
+        # Retrieve all services associated with this customer
+        return self.services.all()
+
+    def get_all_classes(self):
+        # Retrieve all course classes associated with this customer
+        return self.course_classes.all()
