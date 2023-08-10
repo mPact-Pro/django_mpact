@@ -15,9 +15,11 @@ from mPactSessions.models import Session
 class Customer(models.Model):
     name = models.CharField(max_length=200, null=True)
     email = models.EmailField()
-    agency = models.ForeignKey(Agency, on_delete=models.CASCADE)
+    agency = models.ForeignKey(
+        Agency, on_delete=models.CASCADE, blank=True, default='1')
     courseClass = models.ManyToManyField(CourseClass, blank=True)
-    sessions = models.ForeignKey(Session, blank=True, on_delete=models.CASCADE)
+    sessions = models.ForeignKey(
+        Session, blank=True, on_delete=models.CASCADE, null=True)
     services = models.ManyToManyField(Service, blank=True)
     addedOn = models.DateTimeField(auto_now_add=True)
     updatedOn = models.DateTimeField(auto_now=True)

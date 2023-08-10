@@ -10,7 +10,8 @@ from django.db import models
 # A user can be assigned a role: Admin, Counselor
 # We will be able to add, update set default roles and permissions here as well
 class User(AbstractUser):
-    agency = models.ForeignKey(Agency, on_delete=models.SET_NULL, null=True)
+    agency = models.ForeignKey(
+        Agency, on_delete=models.SET_NULL, null=True, db_index=True, default='1')
     role = models.CharField(
         max_length=20,
         choices=[("admin", "Admin"), ("counselor", "Counselor")],
