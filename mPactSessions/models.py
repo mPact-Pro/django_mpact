@@ -16,7 +16,7 @@ class Session(models.Model):
     name = models.CharField(max_length=200, null=True)
     addedOn = models.DateTimeField(auto_now_add=True)
     updatedOn = models.DateTimeField(auto_now=True)
-    sessionDate = models.DateField(db_index=True)
+    sessionDate = models.DateField(db_index=True, auto_now_add=True)
     agency = models.ForeignKey(
         'agency.Agency', on_delete=models.CASCADE, default='1')
 
@@ -37,7 +37,7 @@ class Session(models.Model):
     def get_sessions_current_fiscal_year(cls):
         # Calculate the start and end dates of the current fiscal year
         today = date.today()
-        fiscal_year_start = date(today.year, 10, 1)
+        fiscal_year_start = date(today.year - 1, 10, 1)
         fiscal_year_end = date(today.year + 1, 9, 30)
 
         # Call the private method to filter sessions by date range
@@ -67,8 +67,8 @@ class Session(models.Model):
 
 
 class SessionOutcome(models.Model):
-    name: models.CharField(max_length=200, null=True)
-    outcome: models.CharField(max_length=25)
+    name = models.CharField(max_length=200, null=True)
+    outcome = models.CharField(max_length=25, null=True, blank=True)
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
 
     class Meta:

@@ -33,12 +33,12 @@ class Customer(models.Model):
 
     def get_all_sessions(self):
         # Retrieve all sessions associated with this customer
-        return self.sessions.all()
+        return Session.objects.filter(customer=self.id)
 
     def get_all_services(self):
         # Retrieve all services associated with this customer
-        return self.services.all()
+        return Service.objects.filter(customer=self.id)
 
     def get_all_classes(self):
         # Retrieve all course classes associated with this customer
-        return self.course_classes.all()
+        return CourseClass.objects.filter(customer=self.id)
